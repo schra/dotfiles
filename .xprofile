@@ -1,0 +1,8 @@
+# this is important so that rofi will find my commands in ~/.local/bin
+export PATH=$HOME/.local/bin:$PATH
+
+nm-applet &
+keepassxc &
+riot-desktop --hidden &
+telegram-desktop -startintray &
+thunderbird &

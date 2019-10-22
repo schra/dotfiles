@@ -1,0 +1,19 @@
+[user]
+	name = Andre Schröder
+	email = andre.schroedr@gmail.com
+[push]
+	default = simple
+[alias]
+	amend = !echo "Amending to _$(git log -1 --pretty=%B | head -n1)_. Please confirm." && read && git add -u && git commit --amend --no-edit
+	# https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
+	graph = git log --all --decorate --oneline --graph
+	# https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit
+	recent = !git for-each-ref --color=always --sort=-committerdate refs/heads --format='%(HEAD)%(color:yellow)%(refname:short)|%(color:bold green)%(committerdate:relative)|%(color:blue)%(subject)|%(color:magenta)%(authorname)%(color:reset)'|column -ts'|'
+[pager]
+	# display diffs like in GitHub
+	# https://stackoverflow.com/questions/49278577/how-to-improve-gits-diff-highlighting
+	log = diffr | less -+F -+X
+	show = diffr | less -+F -+X
+	diff = diffr | less -+F -+X
+[core]
+	pager = less -+F -+X

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Toggle the volume.
+#
+# This script doesn't expect any arguments.
+
+pactl set-sink-mute "$(active-volume-sink)" toggle

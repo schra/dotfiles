@@ -1,0 +1,14 @@
+! Title: Andre's custom uBlock filters
+! Expires: 1 hours
+
+# first, remove the right column that contains suggested wiki pages
+vim.fandom.com###WikiaRailWrapper
+
+# second, adjust the width of the left column to 100%
+vim.fandom.com##.WikiaMainContent:style(width:100% !important;)
+
+# remove the footer that contains other suggested wikis
+vim.fandom.com###WikiaFooter
+
+# remove sticky footer
+vim.fandom.com###WikiaBarWrapper

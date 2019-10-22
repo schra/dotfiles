@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# This program can be used as an alternative to `man`
+
+# "mano" comes from the German word "manno" which is a short form for
+# "Mannomann" and means "Oh, man!" which is exactly what I say to myself when
+# there isn't a man page for the program I want to open the help to.
+
+cmd=$1
+
+# [ is a synonym for test
+[ "$cmd" = "[" ] && cmd="test"
+
+mute_() {
+  "$@" &>/dev/null
+}
+
+if mute_ man --pager=cat "$cmd"; then
+  man $cmd
+elif [ "$cmd" = shfmt ] || mute_ "$cmd" --help; then
+  "$cmd" --help | less
+elif mute_ help "$cmd"; then
+  help "$cmd" | less
+else
+  echo No manual entry for $cmd
+fi

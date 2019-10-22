@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+#
+# This script unifies the build environments I'm using. It just looks at the
+# current working directory and uses the right build system.
+#
+# You can execute this script via "c" (compile), "t" (test), or "r" (run).
+#
+# The basic idea of this script is, instead of using the arrow-up key to find
+# my build command again, to just put the build command in here once and then
+# just use ``c``.
+
+set -Eeuo pipefail
+
+# Depending on the executable name, we do different things. This is what the
+# symbollinks are for.
+mode="$(basename "$0")"
+
+# original working directory
+owd="$PWD"
+
+most_recent_file() {
+  # $1: The folder you want to search in. This has to be an absolute path!
+  # $2: A parent folder of $1 that you want to make the resulting paths relative to. This also has to be an absolute path!
+  # from https://stackoverflow.com/a/38996701
+  readarray -t -d '' files < <(LC_ALL=C find "$1" -name . -o -name '.*' -prune -o -type f -printf '%T@%p\0' | sort -rzn | cut -zd/ -f2-)
+  files=("/${files[@]}")      # add a / in front of all entries. this is removed by `cut`
+  files=("${files[@]##"$2"}") # make path relative by removing the prefix $2
+  echo "${files[0]}"
+}
+
+# walk down the directories until we find a .git folder or we hit /
+while true; do
+  if [ "$mode" = t ] && [ -f tox.ini ]; then
+    # this is for https://tox.readthedocs.io/en/latest/
+    tox "$@"
+    exit
+  elif [ -f .latexmkrc ]; then
+    # this is for https://mg.readthedocs.io/latexmk.html
+    if [ "$mode" = c ]; then
+      latexmk "$@"
+      exit
+    elif [ "$mode" = r ]; then
+      latexmk -pdf -pvc "$@"
+      exit
+    fi
+  elif [ -f src/conf.py ]; then
+    # this is for https://www.sphinx-doc.org/en/master/
+    if [ "$mode" = c ]; then
+      # we accept the folder to be cleared (ie deleted) as an argument
+      # TODO: accept "." to delete the current folder
+      if [ $# -eq 1 ]; then
+        if [ "$1" == "." ]; then
+          # rebuild the current directory
+          gio trash "build/$(basename "$owd")" || exit 1
+        elif [ "$1" == "-" ]; then
+          # rebuild everything
+          gio trash "build" || exit 1
+        else
+          # rebuild the passed folder
+          gio trash "build/$1" || exit 1
+        fi
+      fi
+
+      sphinx-build -b html src build
+      exit
+    elif [ "$mode" = r ]; then
+      # opens the most recently edited file (relative to your CWD)
+      if [ "$owd" == "$PWD/src" ] || [[ "$owd" == "$PWD/src/"* ]]; then
+        lastfile=$(most_recent_file "$owd" "$PWD/src/" | cut -d. -f1)
+        url="file://$PWD/build/$lastfile.html"
+      else
+        url="file://$PWD/build/index.html"
+      fi
+
+      echo Opening "$url"
+      firefox "$url"
+      exit
+    fi
+  elif [ -f meson.build ]; then
+    # this is for https://mesonbuild.com
+    if [ "$mode" = c ]; then
+      if [ ! -d build ]; then
+        meson build
+      fi
+
+      cd build
+      ninja
+      exit
+    elif [ "$mode" = r ]; then
+      cd build
+      first_executable="$(meson introspect --targets | jq --raw-output .[0].filename[0])"
+      if [ -f "$first_executable" ]; then
+        $first_executable "$@"
+        exit
+      else
+        echo Error: Please build the project first
+        exit
+      fi
+    fi
+  fi
+
+  if [ "$PWD" == "/" ] || [ -d "$PWD/.git" ]; then
+    break
+  fi
+
+  cd ..
+done
+
+# TODO: have a dedicated message for the case that a project for example doesn't have support for `t`
+echo Error: No project found
+exit 1

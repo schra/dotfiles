@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Increase and decrease the volume.
+#
+# Usage: set-volume +10%
+
+pactl set-sink-volume "$(active-volume-sink)" "$@"

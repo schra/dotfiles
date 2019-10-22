@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Prints the number of arguments.
+#
+# This is a script I'm using during Bash script development.
+
+echo $#

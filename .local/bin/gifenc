@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Convert a video to a gif. Uses a custom palette to gain a higher quality
+
+# Based on http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
+# Usage: gifenc video.mkv anim.gif
+
+set -Eeuo pipefail
+
+palette=$(mktemp /tmp/paletteXXXXX.png)
+filters="fps=15,scale=320:-1:flags=lanczos"
+
+ffmpeg -v warning -i "$1" -vf "$filters,palettegen" -y "$palette"
+ffmpeg -v warning -i "$1" -i "$palette" -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$2"

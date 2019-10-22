@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Print the currently-active pulse audio volume sink.
+
+set -Eeuo pipefail
+
+# This script has a bug that it only finds the active volume sink if I'm
+# currently playing music on it.
+
+# I'm not using something like `pactl set-sink-volume "@DEFAULT_SINK@" +10%`
+# because the default sink is my built-in audio regardless of the fact that
+# audio plays from my audio adapter (this happens e.g. after `pulseaudio -k`).
+
+# I'm not using `amixer -q sset Master 10%+` because this will lead to the
+# left/ right audio to diverge in volume.
+
+pactl list short sinks | grep RUNNING | cut -f1

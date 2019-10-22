@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+x11docker --share ~/Downloads --nxagent --clipboard --pulseaudio -- --shm-size=4G -- jess/firefox

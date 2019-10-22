@@ -1,0 +1,29 @@
+#!/usr/bin/env bats
+
+# These are tests for my dotfiles.
+
+load dotfiles-tests-functionality
+
+@test "Prevent hard-coded paths" {
+  # We make Bash ignore the exit code. Then we test it manually.
+  EC=0
+  # shellcheck disable=SC2154
+  rg -- /home "${home_files[@]}" || EC=$?
+  # EC == 1 means that no match was found
+  [ $EC -eq 1 ]
+}
+
+@test "Shell script formatter" {
+  formatter -d
+}
+
+@test "Shell script static analyzer" {
+  # shellcheck disable=SC2119
+  static_analyzer
+}
+
+@test "Source .bashrc" {
+  # TODO: test this via a Docker container
+  # if there are e.g. syntax errors in the .bashrc this command will fail
+  . .bashrc
+}
