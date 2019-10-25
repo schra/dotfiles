@@ -97,6 +97,15 @@ while true; do
         exit
       fi
     fi
+  elif [ -f package.xml ]; then
+    # this is for Catkin, see http://wiki.ros.org/catkin/package.xml
+    if [ "$mode" = c ]; then
+      catkin build --this --no-deps
+      exit
+    elif [ "$mode" = t ]; then
+      catkin run_tests --this --no-deps
+      exit
+    fi
   fi
 
   if [ "$PWD" == "/" ] || [ -d "$PWD/.git" ]; then
