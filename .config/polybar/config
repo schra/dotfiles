@@ -8,6 +8,7 @@ alert = #222
 green = #0f0
 
 [bar/main]
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 background = ${colors.background}
@@ -51,6 +52,8 @@ format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 padding = 1
+; only show workspaces from the respective monitor
+pin-workspaces = true
 
 label-mode-padding = ${self.padding}
 label-mode-foreground = #000
@@ -87,7 +90,7 @@ label = %date%, %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-# NOTE: use gucharmap to obtain the icons
+; NOTE: use gucharmap to obtain the icons
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
@@ -97,7 +100,7 @@ format-muted =  0%
 
 [module/battery0]
 type = internal/battery
-# BAT0 and BAT1 are randomly assigned, i.e. their IDs sometimes just swap
+; BAT0 and BAT1 are randomly assigned, i.e. their IDs sometimes just swap
 battery = BAT0
 adapter = ADP0
 
@@ -125,7 +128,7 @@ label-full-foreground = ${colors.green}
 
 [module/battery1]
 type = internal/battery
-# BAT0 and BAT1 are randomly assigned, i.e. their IDs sometimes just swap
+; BAT0 and BAT1 are randomly assigned, i.e. their IDs sometimes just swap
 battery = BAT0
 adapter = ADP0
 

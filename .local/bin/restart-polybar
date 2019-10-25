@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This scripts starts Polybar on *all* monitors.
+
+set -Eeuo pipefail
+
+killall -qw polybar || true
+
+for m in $(polybar --list-monitors | cut -d":" -f1); do
+    MONITOR=$m polybar main &
+done
