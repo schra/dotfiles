@@ -9,7 +9,8 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gd='git diff'
 alias gds='git diff --staged'
-alias gsd=gds # common typo
+# common typo
+alias gsd=gds
 alias gl='git log'
 alias gor='git remote get-url origin'
 alias gp='git pull'
@@ -18,7 +19,10 @@ alias grc='git recent'
 alias grs='git reset'
 alias gs='git status'
 alias gsh='git show'
-alias gsh~='git show HEAD~' # show the last commit
+# show the last commit
+alias gsh~='git show HEAD~'
+# Git SHow Summary
+alias gshs='git show --compact-summary'
 alias gst='git stash'
 
 # let's pretend that there is a Git repo in ~
