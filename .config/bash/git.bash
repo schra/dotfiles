@@ -59,6 +59,10 @@ ge() {
 gcm() {
   git commit -m "$*"
 }
+# Git Commit Add Message
+gcam() {
+  git commit -am "$*"
+}
 
 # *d*otfiles *g*rep case *i*nsenstive
 dgi() (
