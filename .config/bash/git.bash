@@ -3,12 +3,15 @@ alias ga.='git add .'
 alias ga='git add'
 alias gap='git add --patch'
 alias gau='git add -u'
+alias gb='git branch'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gd='git diff'
+alias gdS='git diff --compact-summary'
 alias gds='git diff --staged'
+alias gdsS='git diff --staged --compact-summary'
 # common typo
 alias gsd=gds
 alias gl='git log'
@@ -16,13 +19,14 @@ alias gor='git remote get-url origin'
 alias gp='git pull'
 alias gr='git rebase'
 alias grc='git recent'
+alias grm='git rm'
 alias grs='git reset'
 alias gs='git status'
 alias gsh='git show'
 # show the last commit
 alias gsh~='git show HEAD~'
 # Git SHow Summary
-alias gshs='git show --compact-summary'
+alias gshS='git show --compact-summary'
 alias gst='git stash'
 
 # let's pretend that there is a Git repo in ~
