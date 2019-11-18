@@ -129,4 +129,4 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " print the current date
 " d like date
-nnoremap <leader>d :put =strftime('%Y-%m-%d')<cr>
+nnoremap <leader>d i<C-R>=strftime('%a %Y-%m-%d')<cr><esc>
