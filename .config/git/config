@@ -17,3 +17,6 @@
 	diff = diffr | less -+F -+X
 [core]
 	pager = less -+F -+X
+	# fix displaying Umlaute
+	# https://debianforum.de/forum/viewtopic.php?t=161420
+	quotepath = false
