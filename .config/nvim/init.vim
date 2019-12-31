@@ -1,6 +1,35 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'liuchengxu/space-vim-dark'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
+
+" gitgutter: By default, gitgutter will show an additional column that shows
+" the diff. Instead, I configured gitgutter to adjust the background of the
+" line numbers accordingly.
+"
+" make "Add" green and "Change" yellow
+highlight link GitGutterAdd          DiffChange
+highlight link GitGutterChange       DiffAdd
+highlight link GitGutterDelete       DiffDelete
+highlight link GitGutterChangeDelete GitGutterChange
+" make "Add" green and "Change" yellow
+highlight link GitGutterAddLine          DiffChange
+highlight link GitGutterChangeLine       DiffAdd
+highlight link GitGutterDeleteLine       DiffDelete
+highlight link GitGutterChangeDeleteLine DiffChange
+" by default the line number background color is always the same
+highlight link GitGutterAddLineNr          GitGutterAddLine
+highlight link GitGutterChangeLineNr       GitGutterChangeLine
+highlight link GitGutterDeleteLineNr       GitGutterDeleteLine
+highlight link GitGutterChangeDeleteLineNr GitGutterChangeDeleteLine
+" gitgutter will create a sign column by default, completely remove it since
+" we only use gitgutter to highlight line numbers
+let g:gitgutter_signs = 0
+set signcolumn=no
+" highlight line numbers
+let g:gitgutter_highlight_linenrs = 1
+" update the diff every 100ms (default is 4s)
+set updatetime=100
 
 " enable syntax highlighting
 syntax on
