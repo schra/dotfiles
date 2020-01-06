@@ -14,8 +14,6 @@ alias gd='git diff'
 alias gdS='git diff --compact-summary'
 alias gds='git diff --staged'
 alias gdsS='git diff --staged --compact-summary'
-# common typo
-alias gsd=gds
 alias gl='git log'
 alias gm='git merge'
 alias gor='git remote get-url origin'
@@ -82,3 +80,13 @@ dgi() (
   # shellcheck disable=SC2154
   rgi "$@" "${fs_files[@]}"
 )
+
+# Checkout *G*it*H*ub PR
+gh() {
+  if [ $# -ne 2 ]; then
+    echo Usage: gh [PR ID] [branch name]
+    return
+  fi
+
+  git fetch origin pull/$1/head:$2 && git checkout $2
+}
