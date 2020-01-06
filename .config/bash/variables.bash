@@ -1,6 +1,10 @@
 # no need to export vars that are already exported
 PATH="$HOME/.local/bin:$PATH"
 
+# make history longer
+HISTFILESIZE=10000
+HISTSIZE=10000
+
 # for `bat`
 export BAT_STYLE=changes
 
