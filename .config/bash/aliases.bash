@@ -36,6 +36,8 @@ alias ei='command nvim +startinsert'
 alias cr='c && r'
 # grep case insensitive
 alias rgi='rg -i'
+# grep without regex
+alias rgf='rg -F'
 # e for editor. -p means that I open files in vim tabs
 alias e='command nvim -p'
 
@@ -48,3 +50,4 @@ alias lessr='LESS="-Pslines %lt-%lb (%Pt-%Pb\%) file %f" less -R' # speak as "le
 alias cdp='cd ~/Projects/notes/src'
 # *cd* *T*onari
 alias cdt='cd ~/Projects/tonari'
+alias did='(cdp; e diaries/did.rst)'
