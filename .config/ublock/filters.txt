@@ -1,14 +1,24 @@
 ! Title: Andre's custom uBlock filters
 ! Expires: 1 hours
 
-# first, remove the right column that contains suggested wiki pages
-vim.fandom.com###WikiaRailWrapper
+! vim wiki
 
-# second, adjust the width of the left column to 100%
-vim.fandom.com##.WikiaMainContent:style(width:100% !important;)
+  ! First, remove the right column that contains suggested wiki pages
+  vim.fandom.com###WikiaRailWrapper
 
-# remove the footer that contains other suggested wikis
-vim.fandom.com###WikiaFooter
+  ! Second, adjust the width of the left column to 100%
+  vim.fandom.com##.WikiaMainContent:style(width:100% !important;)
 
-# remove sticky footer
-vim.fandom.com###WikiaBarWrapper
+  ! Remove the footer that contains other suggested wikis
+  vim.fandom.com###WikiaFooter
+
+  ! Remove sticky footer
+  vim.fandom.com###WikiaBarWrapper
+
+! Instagram
+
+  ! Remove the "Log in to continue" pop-up
+  www.instagram.com##[role=presentation]
+
+  ! The pop-up also disables scrolling. Fix that.
+  www.instagram.com##body:style(overflow:visible !important;)
