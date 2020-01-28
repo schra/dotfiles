@@ -46,8 +46,6 @@ alias e='command nvim -p'
 #export LESS='-Pslines %lt-%lb (%Pt-%Pb\%) file %f'
 alias lessr='LESS="-Pslines %lt-%lb (%Pt-%Pb\%) file %f" less -R' # speak as "lesser"
 
-# *cd* *p*osts
-alias cdp='cd ~/Projects/notes/src'
 # *cd* *T*onari
 alias cdt='cd ~/Projects/tonari'
 alias did='(cdp; e diaries/did.rst)'

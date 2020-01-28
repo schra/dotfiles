@@ -62,3 +62,25 @@ pacman() {
     command pacman "$@"
   fi
 }
+
+# *cd* *p*osts
+cdp() {
+  local path_=~/Projects/notes/src
+
+  if [ $# -eq 0 ]; then
+    cd $path_
+  fi
+
+  local file_="$path_/$1"
+
+  if [ -f "$file_" ]; then
+    e "$file_"
+  else
+    cd "$file_"
+  fi
+}
+_cdp() {
+  local path_=~/Projects/notes/src
+  mapfile -t COMPREPLY < <(compgen -W "$(ls $path_)" -- "$2")
+}
+complete -F _cdp cdp
