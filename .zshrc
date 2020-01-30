@@ -19,11 +19,6 @@ done
 setopt prompt_subst
 PS1='%9c%$(__git_ps1 "\ (%s)") \$ '
 
-# see https://wiki.archlinux.org/index.php/GnuPG#Configure_pinentry_to_use_the_correct_TTY
-export GPG_TTY
-GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
-
 . /etc/profile.d/autojump.zsh
 
 # put the Bash into vi mode
