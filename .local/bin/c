@@ -61,7 +61,7 @@ while true; do
         fi
       fi
 
-      sphinx-build -b html src build
+      sphinx-build -b html src build -j auto
       exit
     elif [ "$mode" = r ]; then
       # opens the most recently edited file (relative to your CWD)
