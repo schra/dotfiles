@@ -12,6 +12,9 @@ export BAT_STYLE=changes
 export VISUAL=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 
+# fixes the error "Fontconfig error: Cannot load default config file" in `journalctl -x --boot=0`
+export FONTCONFIG_PATH=/etc/fonts
+
 # for React Native
 # see https://facebook.github.io/react-native/docs/getting-started
 for dir in "$HOME/Android/Sdk" /storage/Android/SDK; do
