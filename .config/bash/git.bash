@@ -7,6 +7,7 @@ alias gb='git branch'
 alias gbD='git branch -D'
 alias gc='git commit'
 alias gca='git commit --amend'
+alias gcar='git commit --amend --reset-author'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gcp='git cherry-pick'
@@ -89,4 +90,16 @@ gh() {
   fi
 
   git fetch origin pull/$1/head:$2 && git checkout $2
+}
+
+# clone a git repository and cd into it
+gclo() {
+  if [ $# -ne 1 ]; then
+    echo Usage: glco [url]
+    return
+  fi
+
+  local dir="$(basename "$1")"
+  dir="${dir%.git}"
+  git clone "$1" && cd "$dir"
 }
