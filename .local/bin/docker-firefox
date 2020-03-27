@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-x11docker --share ~/Downloads --nxagent --clipboard --pulseaudio -- --shm-size=4G -- jess/firefox
+IMG=jess/firefox
+docker pull $IMG
+x11docker --share ~/Downloads --nxagent --clipboard --pulseaudio -- --shm-size=4G -- $IMG

@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-x11docker --clipboard --nxagent --pulseaudio --user=RETAIN -- --shm-size=1G -v ~/.cache/spotify:/home/spotify/.cache/spotify -v ~/.config/spotify:/home/spotify/.config/spotify -- jess/spotify
+IMG=jess/spotify
+docker pull $IMG
+x11docker --clipboard --nxagent --pulseaudio --user=RETAIN -- --shm-size=1G -v ~/.cache/spotify:/home/spotify/.cache/spotify -v ~/.config/spotify:/home/spotify/.config/spotify -- $IMG
