@@ -1,9 +1,3 @@
-" t as in title
-" you e.g. type <leader>t= for getting the line underlined with =
-noremap <leader>t YpVr
-" I often forget to press shift -> I type a 0 instead of a =
-noremap <leader>t0 YpVr=
-
 " sort entries of a toctree
 function! MySortToctree()
   let l:save_pos = getcurpos()

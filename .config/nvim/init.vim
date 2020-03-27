@@ -159,3 +159,10 @@ call matchadd('ColorColumn', '\%81v', 100)
 " print the current date
 " d like date
 nnoremap <leader>d i<C-R>=strftime('%a %Y-%m-%d')<cr><esc>
+
+" t as in title
+" you e.g. type <leader>t= for getting the line underlined with =
+noremap <leader>t YpVr
+" I often forget to press shift -> I type a 0 instead of a =
+noremap <leader>t0 YpVr=
+
