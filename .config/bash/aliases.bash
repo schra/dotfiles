@@ -38,6 +38,8 @@ alias cr='c && r'
 alias rgi='rg -i'
 # grep without regex
 alias rgf='rg -F'
+# this is useful when you also want to search in files that are mentioned in the .gitignore file
+alias rgn='rg --no-ignore'
 # e for editor. -p means that I open files in vim tabs
 alias e='command nvim -p'
 
