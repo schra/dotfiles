@@ -198,3 +198,7 @@ exec_always --no-startup-id restart-polybar
 
 workspace_auto_back_and_forth yes
 floating_modifier $mod
+
+# fix Microsoft Teams notifications
+for_window [window_type="notification"] floating enable
+for_window [window_type="notification"] sticky enable
