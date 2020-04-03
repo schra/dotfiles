@@ -90,7 +90,7 @@ while true; do
       cd build
       first_executable="$(meson introspect --targets | jq --raw-output .[0].filename[0])"
       if [ -f "$first_executable" ]; then
-        $first_executable "$@"
+        "$first_executable" "$@"
         exit
       else
         echo Error: Please build the project first
