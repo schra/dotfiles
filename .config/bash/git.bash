@@ -39,7 +39,17 @@ alias gst='git stash'
 
 # let's pretend that there is a Git repo in ~
 git() {
-  if [ "$PWD" = "$HOME" ]; then
+  # Bug fix: The dotfiles command overloads "init" and "clone" which will
+  # replace the current dotfiles repo with a new repo. When executing "git
+  # clone" in $HOME, you probably expect to clone a directory into $HOME and
+  # not to replace your dotfiles repo.
+  # Note that the dotfiles script itself tests for "init" and "clone" only in
+  # the first argument!
+  dangerous_dotfiles_overload() {
+    [[ $# -ge 1 && ("$1" = init || "$1" = clone) ]]
+  }
+
+  if [ "$PWD" = "$HOME" ] && ! dangerous_dotfiles_overload "$@"; then
     dotfiles "$@"
   else
     command git "$@"
