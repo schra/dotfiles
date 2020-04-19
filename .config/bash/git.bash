@@ -59,13 +59,23 @@ git() {
 # Edit a file in a repository based on grepping its path.
 # ge is for Git Edit
 ge() {
-  if [ $# -ne 1 ]; then
-    echo Usage: ge [search]
+  if [ $# -eq 0 ]; then
+    echo Usage: ge [search..]
     return
   fi
 
+  multigrep() {
+    arg=$1
+    if [ $# -eq 1 ]; then
+      rg -i --null-data "$arg"
+    else
+      shift
+      rg -i --null-data "$arg" | multigrep "$@"
+    fi
+  }
+
   local matches
-  readarray -d '' matches < <(git ls-files -z | rg -i --null-data -- "$1")
+  readarray -d '' matches < <(git ls-files -z | multigrep "$@")
 
   if [ ${#matches[@]} = 1 ]; then
     e "${matches[0]}"
