@@ -109,12 +109,20 @@ dgi() (
 
 # Checkout *G*it*H*ub PR
 gh() {
-  if [ $# -ne 2 ]; then
-    echo Usage: gh [PR ID] [branch name]
+  if [ $# -eq 2 ]; then
+    remote=origin
+    pr=$1
+    branch=$2
+  elif [ $# -eq 3 ]; then
+    remote=$1
+    pr=$2
+    branch=$3
+  else
+    echo "Usage: gh [REMOTE-NAME] PR-ID BRANCH-NAME"
     return
   fi
 
-  git fetch origin pull/$1/head:$2 && git checkout $2
+  git fetch "$remote" "pull/$pr/head:$branch" && git checkout "$branch"
 }
 
 # clone a git repository and cd into it
