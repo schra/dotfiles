@@ -81,6 +81,9 @@ cdp() {
 }
 _cdp() {
   local path_=~/Projects/notes/src
-  mapfile -t COMPREPLY < <(compgen -W "$(ls $path_)" -- "$2")
+  cd "$path_"
+  # by setting this array empty, we get the usual completion behavior
+  # https://stackoverflow.com/a/19062943
+  COMPREPLY=()
 }
-complete -F _cdp cdp
+complete -o default -F _cdp cdp
