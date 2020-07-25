@@ -10,6 +10,3 @@ done
 PS1='\W$(__git_ps1 " (%s)") \$ '
 
 . /etc/profile.d/autojump.bash
-
-# put the Bash into vi mode
-set -o vi

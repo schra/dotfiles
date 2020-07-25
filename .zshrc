@@ -21,9 +21,6 @@ PS1='%9c%$(__git_ps1 "\ (%s)") \$ '
 
 . /etc/profile.d/autojump.zsh
 
-# put the Bash into vi mode
-set -o vi
-
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
