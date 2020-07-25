@@ -20,3 +20,5 @@
 	# fix displaying Umlaute
 	# https://debianforum.de/forum/viewtopic.php?t=161420
 	quotepath = false
+[pull]
+	ff = only
