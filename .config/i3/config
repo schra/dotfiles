@@ -177,7 +177,8 @@ bindsym $mod+Shift+p exec "betterlockscreen -l"
 bindsym $mod+n exec nautilus -w
 
 # Chromium (f as firefox is already reserved for fullscreen)
-bindsym $mod+c exec firefox --private-window
+bindsym $mod+c exec firefox
+bindsym $mod+Shift+c exec firefox --private-window
 
 # open a terminal
 bindsym $mod+Return exec alacritty
