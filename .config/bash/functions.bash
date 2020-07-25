@@ -5,14 +5,6 @@ function rm() {
   echo ERROR: use gt instead
   return 1
 }
-function grep() {
-  echo ERROR: use rg instead
-  return 1
-}
-function nvim() {
-  echo ERROR: use e instead
-  return 1
-}
 # disable autocompletion for nvim
 complete -W "" nvim
 

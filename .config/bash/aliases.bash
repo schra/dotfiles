@@ -32,7 +32,7 @@ alias la='ls -lah'
 alias lahS='ls -lahS'
 alias lt='ls -t'
 # e for nvim and i for insert mode
-alias ei='command nvim +startinsert'
+alias ei='nvim +startinsert'
 alias cr='c && r'
 # grep case insensitive
 alias rgi='rg -i'
@@ -41,7 +41,7 @@ alias rgf='rg -F'
 # this is useful when you also want to search in files that are mentioned in the .gitignore file
 alias rgn='rg --no-ignore'
 # e for editor. -p means that I open files in vim tabs
-alias e='command nvim -p'
+alias e='nvim -p'
 
 # The percentage isn't shown until the whole file is loaded. this can be archived by pressing Gg.
 # I also could automate this via the paramter +Gg but this isn't something you'd want for large files
