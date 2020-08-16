@@ -1,0 +1,6 @@
+#/usr/bin/env
+
+# This program allows me to copy & paste commands into the terminal even when
+# they have a $ prepended!
+
+"$@"
