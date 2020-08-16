@@ -3,8 +3,6 @@
 # This script unifies the build environments I'm using. It just looks at the
 # current working directory and uses the right build system.
 #
-# You can execute this script via "c" (compile), "t" (test), or "r" (run).
-#
 # The basic idea of this script is, instead of using the arrow-up key to find
 # my build command again, to just put the build command in here once and then
 # just use ``c``.
@@ -13,6 +11,12 @@ set -Eeuo pipefail
 
 # Depending on the executable name, we do different things. This is what the
 # symbollinks are for.
+#
+# The following modes exist:
+# * c (compile)
+# * t (test)
+# * r (run)
+# * c- (clean)
 mode="$(basename "$0")"
 
 # original working directory
@@ -42,25 +46,29 @@ while true; do
     elif [ "$mode" = r ]; then
       latexmk -pdf -pvc "$@"
       exit
+    elif [ "$mode" = c- ]; then
+      latexmk -c "$@"
+      exit
     fi
   elif [ -f src/conf.py ]; then
     # this is for https://www.sphinx-doc.org/en/master/
-    if [ "$mode" = c ]; then
-      # we accept the folder to be cleared (ie deleted) as an argument
-      # TODO: accept "." to delete the current folder
+    if [ "$mode" = c- ]; then
       if [ $# -eq 1 ]; then
         if [ "$1" == "." ]; then
           # rebuild the current directory
           gio trash "build/$(basename "$owd")" || exit 1
-        elif [ "$1" == "-" ]; then
-          # rebuild everything
-          gio trash "build" || exit 1
+          exit
         else
           # rebuild the passed folder
           gio trash "build/$1" || exit 1
+          exit
         fi
+      else
+        # rebuild everything
+        gio trash "build" || exit 1
+        exit
       fi
-
+    elif [ "$mode" = c ]; then
       sphinx-build -b html src build -j auto
       exit
     elif [ "$mode" = r ]; then
@@ -104,6 +112,12 @@ while true; do
       exit
     elif [ "$mode" = t ]; then
       catkin run_tests --this --no-deps
+      exit
+    fi
+  elif [ -x compile ]; then
+    # this is for simple Bash build files
+    if [ "$mode" = c ]; then
+      ./compile
       exit
     fi
   fi
