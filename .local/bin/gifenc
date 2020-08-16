@@ -7,8 +7,13 @@
 
 set -Eeuo pipefail
 
+input=$1
+output=$2
+
 palette=$(mktemp /tmp/paletteXXXXX.png)
+# this means "set width to 320px. set height so that we keep the aspect ratio.
+# use the lanczos algorithm for scaling"
 filters="fps=15,scale=320:-1:flags=lanczos"
 
-ffmpeg -v warning -i "$1" -vf "$filters,palettegen" -y "$palette"
-ffmpeg -v warning -i "$1" -i "$palette" -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$2"
+ffmpeg -v warning -i "$input" -vf "$filters,palettegen" -y "$palette"
+ffmpeg -v warning -i "$input" -i "$palette" -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$output"
