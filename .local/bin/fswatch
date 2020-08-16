@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Execute a Bash command when the specified files are modified.
+
+set -Eeuo pipefail
+
+if [ $# -lt 2 ]; then
+  echo "Usage: $(basename "$0") [Bash command] [file to watch]..."
+  exit 1
+fi
+
+command=$1
+shift
+
+while true; do
+  # wait on all events that can modify the files
+  inotifywait --event={modify,attrib,moved_to,moved_from,move,move_self,create,delete,delete_self} "$@" >/dev/null 2>&1
+
+  # do not exit when a file didn't compile successfully
+  $command || true
+done
