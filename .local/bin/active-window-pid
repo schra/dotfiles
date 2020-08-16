@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+
+# Determine the pid of the currently active window.
+
+import sys
+from windows import *
+
+if __name__ == "__main__":
+    pid = get_pid_of_active_window()
+    if pid is not None:
+        print(pid)
