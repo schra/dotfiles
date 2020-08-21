@@ -2,14 +2,14 @@
 
 This repository contains configurations of programs I'm using.
 
-OS             | Desktop Environment             | Editor     | Shell    | Terminal
--------------- | ------------------------------- | ---------- | -------- | -------------
-[Arch Linux][] | [i3][] + [Polybar][] + [Rofi][] | [Neovim][] | [Bash][] | [Alacritty][]
+OS             | Desktop Environment              | Editor     | Shell    | Terminal
+-------------- | -------------------------------- | ---------- | -------- | -------------
+[Arch Linux][] | [i3][] + [Polybar][] + [dmenu][] | [Neovim][] | [Bash][] | [Alacritty][]
 
 [Arch Linux]: https://www.archlinux.org
 [i3]: https://i3wm.org
 [Polybar]: https://github.com/jaagr/polybar
-[Rofi]: https://github.com/davatorium/rofi
+[dmenu]: https://tools.suckless.org/dmenu/
 [Neovim]: https://neovim.io
 [Bash]: https://www.gnu.org/software/bash
 [Alacritty]: https://github.com/jwilm/alacritty

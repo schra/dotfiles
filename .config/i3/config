@@ -162,7 +162,7 @@ bindsym $mod+Escape mode "escape"
 #################
 
 # start program launcher
-bindsym $mod+d exec "rofi -modi run,window -show run -kb-mode-next 'Alt+Tab'"
+bindsym $mod+d exec dmenu_run -i
 
 # eXit Linux
 bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'Do you really want to shutdown?' -b 'Yes, exit i3' 'systemctl poweroff'"
