@@ -11,7 +11,7 @@ complete -W "" nvim
 # *mk*dir and *cd*
 function mkcd() {
   # shellcheck disable=SC2164
-  mkdir "$1" && cd "$1"
+  mkdir --parents "$1" && cd "$1"
 }
 
 # find a file whose name contains a certain string
