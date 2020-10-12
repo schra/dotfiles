@@ -131,12 +131,17 @@ gh() {
 
 # clone a git repository and cd into it
 gclo() {
-  if [ $# -ne 1 ]; then
-    echo Usage: glco [url]
+  if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+    echo Usage: glco url [repo name]
     return
   fi
 
-  local dir="$(basename "$1")"
-  dir="${dir%.git}"
-  git clone "$1" && cd "$dir"
+  if [ $# -eq 1 ]; then
+    local dir="$(basename "$1")"
+    dir="${dir%.git}"
+  else
+    local dir="$2"
+  fi
+
+  git clone "$1" "$dir" && cd "$dir"
 }
