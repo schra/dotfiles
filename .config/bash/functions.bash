@@ -79,3 +79,17 @@ _cdp() {
   COMPREPLY=()
 }
 complete -o default -F _cdp cdp
+
+# expand tabs to 2 spaces in-place
+expand-tabs() {
+  if [ $# -eq 0 ]; then
+    echo usage: expand-tabs FILES..
+    return
+  fi
+
+  for f in "$@"; do
+    if [ -f "$f" ]; then
+      expand -t2 "$f" | sponge "$f"
+    fi
+  done
+}
