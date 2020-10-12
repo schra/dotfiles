@@ -53,6 +53,9 @@ bindsym $mod+i focus child
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# force-kill focused window
+bindsym $mod+Control+Shift+q exec kill -9 "$(active-window-pid)"
+
 # Workspaces
 ############
 
