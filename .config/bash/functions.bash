@@ -65,10 +65,10 @@ cdp() {
 
   local file_="$path_/$1"
 
-  if [ -f "$file_" ]; then
-    e "$file_"
-  else
+  if [ -d "$file_" ]; then
     cd "$file_"
+  else
+    e "$file_"
   fi
 }
 _cdp() {
