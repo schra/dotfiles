@@ -35,16 +35,17 @@ font-1 = "Font Awesome 5 Free Solid:size=10;2"
 
 modules-left = i3
 modules-center = date
-modules-right = battery0 battery1 pulseaudio
+modules-right = battery0 battery1 memory pulseaudio
 
 tray-position = right
 tray-padding = 2
 tray-detached = false
 
-[module/xwindow]
-type = internal/xwindow
-label = %title%
-label-maxlen = 100
+; without this I use up all my RAM too often
+[module/memory]
+type = internal/memory
+label = %gb_used%
+interval = 5
 
 [module/i3]
 type = internal/i3
