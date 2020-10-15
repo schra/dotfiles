@@ -143,5 +143,5 @@ gclo() {
     local dir="$2"
   fi
 
-  git clone "$1" "$dir" && cd "$dir"
+  git clone --recurse-submodules "$1" "$dir" && cd "$dir"
 }
