@@ -60,6 +60,12 @@ git() {
   fi
 }
 
+# zsh-specific: zsh might have the alias ge for grep-excuses. so undefine the
+# alias before defining the function ge
+if type ge >/dev/null 2>&1; then
+  unalias ge
+fi
+
 # Edit a file in a repository based on grepping its path.
 # ge is for Git Edit
 ge() {

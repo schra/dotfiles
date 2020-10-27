@@ -6,7 +6,16 @@ for file in ~/.config/bash/*.bash; do
 done
 
 # see https://stackoverflow.com/questions/15883416/adding-git-branch-on-the-bash-command-prompt
-. /usr/share/git/completion/git-prompt.sh
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+  # Arch Linux specific. In Ubuntu this is sourced automatically.
+  . /usr/share/git/completion/git-prompt.sh
+fi
 PS1='\W$(__git_ps1 " (%s)") \$ '
 
-. /etc/profile.d/autojump.bash
+if [ -f /etc/profile.d/autojump.bash ]; then
+  # Arch Linux
+  . /etc/profile.d/autojump.bash
+elif [ -f /usr/share/autojump/autojump.sh ]; then
+  # Ubuntu
+  . /usr/share/autojump/autojump.sh
+fi

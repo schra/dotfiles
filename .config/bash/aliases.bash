@@ -13,6 +13,11 @@ alias diff='diff --color=auto'
 alias cloc='cloc --exclude-dir=node_modules'
 alias df='df -h'
 alias du='du -hs'
+if [ $(command -v ncal > /dev/null) ]; then
+  # On Ubuntu let `cal` start on Mondays instead of Sundays
+  # https://bugs.launchpad.net/ubuntu/+source/bsdmainutils/+bug/908233
+  alias cal='ncal -bM'
+fi
 
 # Among others, this fixes the backspace on my remote server.
 # https://unix.stackexchange.com/questions/67537/prevent-ssh-client-passing-term-environment-variable-to-server

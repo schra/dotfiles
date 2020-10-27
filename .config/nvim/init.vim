@@ -1,3 +1,7 @@
+" Ubuntu-specific: by querying for python3, py3 is loaded instead of py2
+if has('python3')
+endif
+
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'liuchengxu/space-vim-dark'
 Plug 'airblade/vim-gitgutter'
