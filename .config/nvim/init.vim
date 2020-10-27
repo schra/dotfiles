@@ -158,7 +158,7 @@ call matchadd('ColorColumn', '\%81v', 100)
 
 " print the current date
 " d like date
-nnoremap <leader>d i<C-R>=strftime('%a %Y-%m-%d')<cr><esc>
+nnoremap <leader>d i<enter><esc>ki<C-R>=strftime('%a %Y-%m-%d')<cr><esc>ddPPjVr-o<enter>
 
 " t as in title
 " you e.g. type <leader>t= for getting the line underlined with =
