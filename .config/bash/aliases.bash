@@ -1,4 +1,6 @@
 # common typos
+##############
+
 alias pamcan=pacman
 alias pacan=pacman
 alias gpre=grep
@@ -8,6 +10,8 @@ alias rp=rg
 alias ag=rg
 
 # aliases that overwrite existing behavior
+##########################################
+
 alias ls='ls --color=auto'
 alias diff='diff --color=auto'
 alias cloc='cloc --exclude-dir=node_modules'
@@ -24,7 +28,13 @@ fi
 # TODO: Can I remove this after reinstalling my vserver?
 alias ssh='TERM=xterm ssh'
 
+# --no-mtime because I find the behavior that it sets the modification date to the video's upload date confusing.
+# --merge-output-format is for avoiding mkv because FF doesn't support it.
+alias youtube-dl='youtube-dl --no-mtime --merge-output-format mp4'
+
 # shortcut aliases
+##################
+
 alias n='nautilus .'
 alias py=python3
 alias py2=python2
