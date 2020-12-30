@@ -56,4 +56,5 @@ alias lessr='LESS="-Pslines %lt-%lb (%Pt-%Pb\%) file %f" less -R' # speak as "le
 # *cd* *T*onari
 alias cdt='cd ~/Projects/tonari'
 alias did='(cdp; e diaries/did.rst)'
+alias todo='(cdp; e diaries/todo.rst)'
 alias cdpe='cdp && ge'
