@@ -39,8 +39,7 @@ alias n='nautilus .'
 alias py=python3
 alias py2=python2
 alias py3=python3
-# the last import is for instructions like "np.max"
-alias np='py -ic "import math; from numpy import *;import numpy as np;"'
+alias np='py -i ~/.config/bash/np.py'
 # TODO: rename this. only Git commands should start with g
 alias gt='gio trash'
 alias la='ls -lah'
