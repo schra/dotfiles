@@ -24,7 +24,7 @@ PS1='%9c%$(__git_ps1 "\ (%s)") \$ '
 
 if [ -f /etc/profile.d/autojump.zsh ]; then
   # Arch Linux
-  . /etc/profile.d/autojump.szh
+  . /etc/profile.d/autojump.zsh
 elif [ -f /usr/share/autojump/autojump.sh ]; then
   # Ubuntu
   . /usr/share/autojump/autojump.sh
