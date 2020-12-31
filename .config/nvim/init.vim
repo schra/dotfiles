@@ -86,7 +86,11 @@ set termguicolors
 hi LineNr ctermbg=NONE guibg=NONE
 
 " activate spell checking
+"
+" we need to use both "setlocal" and "setglobal" to activate spell checking in
+" *all* tabs
 setlocal spell spelllang=en_us,de_de
+setglobal spell spelllang=en_us,de_de
 hi SpellBad cterm=underline,bold ctermfg=white ctermbg=red 
 
 " copy and paste to system clipboard
