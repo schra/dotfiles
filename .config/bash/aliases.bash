@@ -32,6 +32,11 @@ alias ssh='TERM=xterm ssh'
 # --merge-output-format is for avoiding mkv because FF doesn't support it.
 alias youtube-dl='youtube-dl --no-mtime --merge-output-format mp4'
 
+# I often forget to execute Python and end up copy-pasting Python code into the
+# Bash. However, import is an actual command and this confuses me every time.
+# Thus avoid calling the import command and print an useful hint instead.
+alias import='echo You probably forgot to call Python?'
+
 # shortcut aliases
 ##################
 
