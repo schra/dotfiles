@@ -151,6 +151,7 @@ bindsym $mod+r mode "resize"
 mode "escape" {
   bindsym $mod+Escape mode "default"
 
+  bindsym Print exec gnome-screenshot -i
   bindsym XF86AudioRaiseVolume exec $AudioRaiseVolume
   bindsym XF86AudioLowerVolume exec $AudioLowerVolume
   bindsym XF86AudioMute exec $AudioMute
