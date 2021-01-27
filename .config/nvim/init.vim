@@ -5,6 +5,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'liuchengxu/space-vim-dark'
 Plug 'airblade/vim-gitgutter'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 " gitgutter: By default, gitgutter will show an additional column that shows
