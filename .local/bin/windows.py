@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 # Parts of the code are based on https://stackoverflow.com/a/42404044
 
