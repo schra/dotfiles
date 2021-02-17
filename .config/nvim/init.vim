@@ -6,6 +6,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'liuchengxu/space-vim-dark'
 Plug 'airblade/vim-gitgutter'
 Plug 'hashivim/vim-terraform'
+Plug 'rhysd/conflict-marker.vim'
 call plug#end()
 
 " gitgutter: By default, gitgutter will show an additional column that shows
@@ -175,3 +176,8 @@ noremap <leader>t YpVr
 " I often forget to press shift -> I type a 0 instead of a =
 noremap <leader>t0 YpVr=
 
+" configure conflict-marker
+highlight ConflictMarkerBegin guibg=#2f7366
+highlight ConflictMarkerOurs guibg=#2e5049
+highlight ConflictMarkerTheirs guibg=#344f69
+highlight ConflictMarkerEnd guibg=#2f628e
