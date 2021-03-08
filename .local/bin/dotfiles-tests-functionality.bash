@@ -44,7 +44,7 @@ dotfiles_real_files() {
   export -a TMP
   # ignore false positive
   # shellcheck disable=SC2034
-  remove_from_list repo_files TMP README.md LICENSE .local/bin/r .local/bin/t
+  remove_from_list repo_files TMP README.md LICENSE .local/bin/r .local/bin/t .github/workflows/tests.yml
   OUT=("${TMP[@]}")
 }
 

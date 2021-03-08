@@ -33,7 +33,7 @@ I'm using [dotfiles.sh](https://github.com/alfunx/dotfiles.sh) to maintain this 
 First, install my dotfiles and all test dependencies:
 
 ```
-pacman -S ripgrep shfmt shellcheck bats
+pacman -S ripgrep shfmt shellcheck bash-bats
 ```
 
 Then you can run the tests for my dotfiles like this:
