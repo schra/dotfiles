@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+destination="$(dotfiles rev-parse --git-dir)/hooks/pre-commit"
+
+cat >"$destination" <<\EOF
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+echo Executing tests before committing:
+dotfiles-tests --pretty
+EOF
+
+chmod +x "$destination"

@@ -47,3 +47,9 @@ Sometimes you can also directly apply auto-fixes:
 ```
 dotfiles-apply-autofixes
 ```
+
+You can also automatically execute the tests before each Git commit:
+
+```
+dotfiles-install-hook
+```
