@@ -1,4 +1,4 @@
-! Title: Andre's custom uBlock filters
+! Title: André's custom uBlock filters
 ! Expires: 1 hours
 
 ! vim wiki
