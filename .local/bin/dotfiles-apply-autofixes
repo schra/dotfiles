@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
-
+#
 # Apply auto-fixes to my dotfiles.
 
 set -Eeuo pipefail
 
 . "$(dirname "$0$")"/dotfiles-tests-functionality.bash
 
-formatter -w
+export -a DOTFILES_BASH_FILES
+dotfiles_bash_files DOTFILES_BASH_FILES
 
-diff=$(static_analyzer -f diff 2>/dev/null)
+formatter -w "${DOTFILES_BASH_FILES[@]}"
+
+diff=$(static_analyzer -f diff "${DOTFILES_BASH_FILES[@]}" 2>/dev/null)
 if [ "$diff" ]; then
   echo "$diff" | dotfiles apply
 fi

@@ -10,7 +10,6 @@ complete -W "" nvim
 
 # *mk*dir and *cd*
 function mkcd() {
-  # shellcheck disable=SC2164
   mkdir --parents "$1" && cd "$1"
 }
 

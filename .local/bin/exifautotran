@@ -36,8 +36,8 @@ EOF
   esac
 
   if test -n "$transform"; then
-    echo Executing: jpegtran -copy all $transform "$i" >&2
-    jpegtran -copy all $transform "$i" >tempfile
+    echo "Executing: jpegtran -copy all $transform $i" >&2
+    jpegtran -copy all "$transform" "$i" >tempfile
     if test $? -ne 0; then
       echo Error while transforming "$i" - skipped. >&2
     else

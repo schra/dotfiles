@@ -9,5 +9,5 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
-shuf -zer -n$1  {A..Z} {a..z} {0..9}
+shuf -zer "-n$1" {A..Z} {a..z} {0..9}
 echo

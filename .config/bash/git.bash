@@ -46,7 +46,7 @@ alias grsH='git reset --hard'
 alias gs='git status'
 alias gsh='git show'
 alias gshS='git show --compact-summary' # Git SHow Summary
-alias gsh~='git show HEAD~' # show the last commit
+alias gsh~='git show HEAD~'             # show the last commit
 alias gst='git stash'
 
 # let's pretend that there is a Git repo in ~
@@ -70,15 +70,13 @@ git() {
 
 # zsh-specific: zsh might have the alias ge for grep-excuses. so undefine the
 # alias before defining the function ge
-if type ge >/dev/null 2>&1; then
-  unalias ge
-fi
+unalias ge 2>/dev/null
 
 # Edit a file in a repository based on grepping its path.
 # ge is for Git Edit
 ge() {
   if [ $# -eq 0 ]; then
-    echo Usage: ge [search..]
+    echo "Usage: ge [search..]"
     return
   fi
 
@@ -146,12 +144,13 @@ gh() {
 # clone a git repository and cd into it
 gclo() {
   if [ $# -lt 1 ] || [ $# -gt 2 ]; then
-    echo Usage: glco url [repo name]
+    echo "Usage: glco url [repo name]"
     return
   fi
 
   if [ $# -eq 1 ]; then
-    local dir="$(basename "$1")"
+    local dir
+    dir="$(basename "$1")"
     dir="${dir%.git}"
   else
     local dir="$2"

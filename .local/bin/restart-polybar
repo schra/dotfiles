@@ -7,5 +7,5 @@ set -Eeuo pipefail
 killall -qw polybar || true
 
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar main &
+  MONITOR=$m polybar main &
 done

@@ -1,29 +1,49 @@
 #!/usr/bin/env bats
-
+#
 # These are tests for my dotfiles.
 
 load dotfiles-tests-functionality
 
+export -a DOTFILES_REAL_FILES
+dotfiles_real_files DOTFILES_REAL_FILES
+
+export -a DOTFILES_BASH_FILES
+dotfiles_bash_files DOTFILES_BASH_FILES
+
+DOTFILES_ROOT=$(dotfiles_root)
+
 @test "Prevent hard-coded paths" {
+  # Whitelist some files that are allowed to contain "/home"
+  export -a files
+  remove_from_list DOTFILES_REAL_FILES files .local/bin/dotfiles-tests .local/bin/docker-spotify
+
   # We make Bash ignore the exit code. Then we test it manually.
   EC=0
-  # shellcheck disable=SC2154
-  rg -- /home "${home_files[@]}" || EC=$?
+  rg -- /home "${files[@]}" || EC=$?
   # EC == 1 means that no match was found
   [ $EC -eq 1 ]
 }
 
 @test "Shell script formatter" {
-  formatter -d
+  formatter -d "${DOTFILES_BASH_FILES[@]}"
 }
 
 @test "Shell script static analyzer" {
-  # shellcheck disable=SC2119
-  static_analyzer
+  static_analyzer "${DOTFILES_BASH_FILES[@]}"
 }
 
 @test "Source .bashrc" {
-  # TODO: test this via a Docker container
-  # if there are e.g. syntax errors in the .bashrc this command will fail
-  . .bashrc
+  # If there are e.g. syntax errors in the .bashrc this command will fail.
+  #
+  # We start Bash in interactive mode which will source the bashrc and then
+  # immediately exit the interactive mode.
+  out=$(bash --init-file "$DOTFILES_ROOT/.bashrc" -i -c exit)
+  echo "$out"
+  [ -z "$out" ]
+
+  # Sourcing it again should not fail either (For example, it could happen that
+  # you unalias something twice this way.)
+  out=$(bash --init-file "$DOTFILES_ROOT/.bashrc" -i -c ". \"$DOTFILES_ROOT/.bashrc\" 2>&1; exit")
+  echo "$out"
+  [ -z "$out" ]
 }
