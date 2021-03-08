@@ -3,6 +3,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 nm-applet &
 keepassxc &
-riot-desktop --hidden &
+element-desktop --hidden &
 telegram-desktop -startintray &
+signal-desktop --start-in-tray &
 thunderbird &
