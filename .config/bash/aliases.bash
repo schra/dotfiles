@@ -61,6 +61,7 @@ alias rgf='rg -F'
 alias rgn='rg --no-ignore'
 # e for editor. -p means that I open files in vim tabs
 alias e='nvim -p'
+alias tf=terraform
 
 # The percentage isn't shown until the whole file is loaded. this can be archived by pressing Gg.
 # I also could automate this via the paramter +Gg but this isn't something you'd want for large files
